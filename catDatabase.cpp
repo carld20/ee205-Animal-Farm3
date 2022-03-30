@@ -22,7 +22,7 @@
 
 struct Cat cats[MAX_CATS];
 
-size_t numCats = 0;
+NumCats numCats = 0;
 
 //Reset database
 void initializeDatabase(){
@@ -53,7 +53,7 @@ bool isFull(){
 }
 
 //Check if index is ok
-extern bool isIndexValid( const size_t index ){
+extern bool isIndexValid( const NumCats index ){
     if( index <= 0 ){
         return false;
     }
@@ -87,13 +87,13 @@ bool isWeightValid( const Weight weight ){
 }
 
 //Delete cat info
-void wipeCat(const size_t index ){
+void wipeCat(const NumCats index ){
     assert( isIndexValid( index ) );
     memset( &cats[index], 0, sizeof( struct Cat ) );
 }
 
 //swap cats' index
-bool swapCat( const size_t x, const size_t y ){
+bool swapCat( const NumCats x, const NumCats y ){
     if ( !isIndexValid( x ) ){
         return false;
     }

@@ -16,7 +16,7 @@
 #include "deleteCats.h"
 #include "catDatabase.h"
 
-bool deleteCat( const size_t index ){
+bool deleteCat( const NumCats index ){
     if( !isIndexValid( index ) ){
         return false;
     }

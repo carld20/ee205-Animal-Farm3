@@ -16,9 +16,9 @@
 
 #define NULL 0
 
-extern void printCat(  const size_t index );
+extern void printCat(  const NumCats index );
 extern void printAllCats();
-extern size_t findCat( const char* name );
+extern NumCats findCat( const char* name );
 extern const char* genderCat( const enum Genders gender );
 extern const char* breedCat(  const enum Breeds breed );
 extern const char* colorCat(  const enum Color color );

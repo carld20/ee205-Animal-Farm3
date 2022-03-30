@@ -16,7 +16,7 @@
 #include "reportCats.h"
 #include "catDatabase.h"
 
-bool updateCatName( const size_t index, const char* name ){
+bool updateCatName( const NumCats index, const char* name ){
     isIndexValid( index ); //Check if index is valid (same with others)
     isNameValid( name ); //Check if name is too long
 
@@ -26,7 +26,7 @@ bool updateCatName( const size_t index, const char* name ){
 
     return true;
 }
-bool fixCat( const size_t index ){
+bool fixCat( const NumCats index ){
     isIndexValid( index );
 
     cats[index].isFixed = true;
@@ -34,7 +34,7 @@ bool fixCat( const size_t index ){
     return true;
 }
 
-bool updateCatWeight( const size_t index, const Weight weight ){
+bool updateCatWeight( const NumCats index, const Weight weight ){
     isIndexValid( index );
     isWeightValid( weight ); //Check if weight is <=0
 
@@ -43,7 +43,7 @@ bool updateCatWeight( const size_t index, const Weight weight ){
     return true;
 }
 
-bool updateCatCollar1( const size_t index, const enum Color color ){
+bool updateCatCollar1( const NumCats index, const enum Color color ){
     isIndexValid( index );
 
     cats[index].collarColor1 = color;
@@ -51,7 +51,7 @@ bool updateCatCollar1( const size_t index, const enum Color color ){
     return true;
 }
 
-bool updateCatCollar2( const size_t index, const enum Color color ){
+bool updateCatCollar2( const NumCats index, const enum Color color ){
     isIndexValid( index );
 
     cats[index].collarColor2 = color;
@@ -59,7 +59,7 @@ bool updateCatCollar2( const size_t index, const enum Color color ){
     return true;
 }
 
-bool updateLicense( const size_t index, const unsigned long long license ){
+bool updateLicense( const NumCats index, const unsigned long long license ){
     isIndexValid( index );
 
     cats[index].license = license;

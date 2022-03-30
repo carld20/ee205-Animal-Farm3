@@ -17,11 +17,11 @@
 #include "catDatabase.h"
 
 void printAllCats(){
-    for( size_t j = 0; j < numCats; j++ ){
+    for( NumCats j = 0; j < numCats; j++ ){
         printCat( j );
     }
 }
-void printCat( const size_t index ){
+void printCat( const NumCats index ){
     if( !isIndexValid( index ) ){
         return;
     }
@@ -29,11 +29,11 @@ void printCat( const size_t index ){
     printf( "cat index = [%lu]: name = [%s], gender = [%s], breed = [%s], isFixed = [%d], weight = [%f], color1 = [%s], color2 = [%s], license = [%llu] \n", index, cats[index].name, genderCat( cats[index].gender ), breedCat( cats[index].breed ), cats[index].isFixed, cats[index].weight, colorCat( cats[index].collarColor1 ), colorCat( cats[index].collarColor2 ), cats[index].license );
 }
 
-size_t findCat( const char* name ){
+NumCats findCat( const char* name ){
     if( name == NULL ){
         return 1;
     }
-    for( size_t j = 0; j < numCats; j++ ){
+    for( NumCats j = 0; j < numCats; j++ ){
         if( strncmp( name, cats[j].name, MAX_CAT_NAME ) == 0 ){
             return j;
         }

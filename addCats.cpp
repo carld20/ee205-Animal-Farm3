@@ -19,7 +19,7 @@
 
 //Check if cat exists
 bool catExist(const char* newName ){
-    for( size_t i = 0; i < numCats; i++ ) {
+    for( NumCats i = 0; i < numCats; i++ ) {
         if (strncmp(cats[i].name, newName, MAX_CAT_NAME) == 0) {
             return true; //cat exists
         }
@@ -51,7 +51,7 @@ unsigned int addCat ( const char* newName, const enum Genders newGender, const e
 
     assert ( validateDatabase() == true );
 
-    size_t index = numCats;
+    NumCats index = numCats;
 
     strncpy( cats[index].name, newName, MAX_CAT_NAME );
     cats[index].gender              = newGender;

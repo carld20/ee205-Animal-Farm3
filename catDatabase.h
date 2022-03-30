@@ -20,7 +20,9 @@
 
 typedef float Weight;
 
-extern size_t numCats;
+typedef size_t NumCats;
+
+extern NumCats numCats;
 
 enum Genders { Male, Female, Unknown };
 enum Breeds { UNKNOWN_BREED, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX };
@@ -49,7 +51,7 @@ extern bool isFull();
 extern bool validateDatabase();
 
 //Implement isIndexValid
-extern bool isIndexValid( const size_t index );
+extern bool isIndexValid( const NumCats index );
 
 //Implement isNameValid
 extern bool isNameValid( const char* name );
@@ -58,7 +60,7 @@ extern bool isNameValid( const char* name );
 extern bool isWeightValid( const Weight weight );
 
 //Implement wipeCat
-extern void wipeCat( const size_t index );
+extern void wipeCat( const NumCats index );
 
 //Implement swapCat
-extern bool swapCat( const size_t x, const size_t y);
+extern bool swapCat( const NumCats x, const NumCats y);

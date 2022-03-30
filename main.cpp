@@ -64,7 +64,7 @@ int main() {
                 assert( findCat( "Carl" ) == BAD_CAT );
 
                 //Add details
-                size_t testCat = addCat( "Oscar", Unknown, SHORTHAIR, false, 1.1, Red, Black, 111 );
+                NumCats testCat = addCat( "Oscar", Unknown, SHORTHAIR, false, 1.1, Red, Black, 111 );
                 assert( testCat != BAD_CAT );
                 assert( testCat < MAX_CATS );
 
