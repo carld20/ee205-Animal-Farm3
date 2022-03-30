@@ -17,7 +17,7 @@ extern unsigned int addCat (const char* newName,
                             const enum Genders newGender,
                             const enum Breeds newBreed,
                             const bool newFixed,
-                            const float newWeight,
+                            const Weight newWeight,
                             const enum Color newCollarColor1,
                             const enum Color newColllarColor2,
                             const unsigned long long newLicense

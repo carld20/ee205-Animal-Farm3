@@ -18,6 +18,8 @@
 #define MAX_CAT_NAME (30)
 
 
+typedef float Weight;
+
 extern size_t numCats;
 
 enum Genders { Male, Female, Unknown };
@@ -29,7 +31,7 @@ struct Cat {
     enum Genders            gender;
     enum Breeds             breed;
     bool                    isFixed;
-    float                   weight;
+    Weight                  weight;
     enum Color              collarColor1;
     enum Color              collarColor2;
     unsigned long long      license;
@@ -53,7 +55,7 @@ extern bool isIndexValid( const size_t index );
 extern bool isNameValid( const char* name );
 
 //Implement isWeightValid
-extern bool isWeightValid( const float weight );
+extern bool isWeightValid( const Weight weight );
 
 //Implement wipeCat
 extern void wipeCat( const size_t index );

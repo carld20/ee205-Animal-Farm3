@@ -77,7 +77,7 @@ bool isNameValid( const char* name ){
 }
 
 //check if weight is ok
-bool isWeightValid( const float weight ){
+bool isWeightValid( const Weight weight ){
     if( weight <= 0 ){
         return false;
     }

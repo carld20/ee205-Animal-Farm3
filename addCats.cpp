@@ -30,7 +30,7 @@ bool catExist(const char* newName ){
 }
 
 //Add to database
-unsigned int addCat ( const char* newName, const enum Genders newGender, const enum Breeds newBreed,const bool  newFixed,const float newWeight, const enum Color newCollarColor1, const enum Color newCollarColor2, const unsigned long long newLicense ) {
+unsigned int addCat ( const char* newName, const enum Genders newGender, const enum Breeds newBreed,const bool  newFixed,const Weight newWeight, const enum Color newCollarColor1, const enum Color newCollarColor2, const unsigned long long newLicense ) {
 
     //Check if ok to add cat to database
     if( isFull() ){
@@ -51,7 +51,7 @@ unsigned int addCat ( const char* newName, const enum Genders newGender, const e
 
     assert ( validateDatabase() == true );
 
-    ssize_t index = numCats;
+    size_t index = numCats;
 
     strncpy( cats[index].name, newName, MAX_CAT_NAME );
     cats[index].gender              = newGender;
