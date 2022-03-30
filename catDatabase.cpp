@@ -12,9 +12,13 @@
 #include <string.h>
 #include <assert.h>
 #include <stdio.h>
+
 #include <glob.h>
 
+
 #include "catDatabase.h"
+#include "reportCats.h"
+
 
 struct Cat cats[MAX_CATS];
 
@@ -49,16 +53,15 @@ bool isFull(){
 }
 
 //Check if index is ok
-extern bool isIndexValid( const ssize_t index ){
+extern bool isIndexValid( const size_t index ){
     if( index <= 0 ){
         return false;
     }
-    if( index >= numCats ){
+    if( index >= numCats ) {
         return false;
     }
-    else{
-        return true;
-    }
+    return true;
+
 }
 
 //Check if name is ok
@@ -69,9 +72,8 @@ bool isNameValid( const char* name ){
     if( strlen( name ) > MAX_CAT_NAME - 1 ){
         return false;
     }
-    else{
-        return true;
-    }
+
+    return true;
 }
 
 //check if weight is ok
@@ -85,13 +87,13 @@ bool isWeightValid( const float weight ){
 }
 
 //Delete cat info
-void wipeCat(const ssize_t index ){
+void wipeCat(const size_t index ){
     assert( isIndexValid( index ) );
     memset( &cats[index], 0, sizeof( struct Cat ) );
 }
 
 //swap cats' index
-bool swapCat( const ssize_t x, const ssize_t y ){
+bool swapCat( const size_t x, const size_t y ){
     if ( !isIndexValid( x ) ){
         return false;
     }

@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
-#include <stdbool.h>
+#include <assert.h>
 #include <glob.h>
 
 #include "deleteCats.h"
@@ -20,13 +20,22 @@ bool deleteCat( const size_t index ){
     if( !isIndexValid( index ) ){
         return false;
     }
-    else{
-        swapCat( index, numCats - 1 ); //Swap last cat with delete cat
-        wipeCat( numCats - 1 );
-
-        numCats -= 1;
+    if( numCats == 0 ) {
         return true;
     }
+
+    assert ( validateDatabase() == true );
+
+
+    swapCat( index, numCats - 1 ); //Swap last cat with delete cat
+    wipeCat( numCats - 1 );
+
+    numCats -= 1;
+
+    assert( validateDatabase() == true );
+
+    return true;
+
 }
 
 bool deleteAllCats(){

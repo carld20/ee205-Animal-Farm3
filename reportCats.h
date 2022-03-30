@@ -14,6 +14,8 @@
 #include <glob.h>
 #include "catDatabase.h"
 
+#define NULL 0
+
 extern void printCat(  const size_t index );
 extern void printAllCats();
 extern size_t findCat( const char* name );

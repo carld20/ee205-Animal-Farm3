@@ -11,13 +11,16 @@
 
 #include <string.h>
 #include <stdio.h>
+#include <assert.h>
+#include <glob.h>
+
 #include "addCats.h"
 #include "catDatabase.h"
 
 //Check if cat exists
 bool catExist(const char* newName ){
-    for( ssize_t i = 0; i < numCats; i++ ){
-        if( strncmp( cats[i].name, newName, MAX_CAT_NAME ) == 0){
+    for( size_t i = 0; i < numCats; i++ ) {
+        if (strncmp(cats[i].name, newName, MAX_CAT_NAME) == 0) {
             return true; //cat exists
         }
 
@@ -46,6 +49,8 @@ unsigned int addCat ( const char* newName, const enum Genders newGender, const e
         return 1;
     }
 
+    assert ( validateDatabase() == true );
+
     ssize_t index = numCats;
 
     strncpy( cats[index].name, newName, MAX_CAT_NAME );
@@ -59,5 +64,6 @@ unsigned int addCat ( const char* newName, const enum Genders newGender, const e
 
     numCats += 1; //Add one to total number of cats in database
 
+    assert( validateDatabase() == true );
     return index;
 }

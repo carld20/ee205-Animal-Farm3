@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 #include <string.h>
 #include <stdio.h>
-#define NULL 0
+
 
 
 #include "reportCats.h"
@@ -26,7 +26,7 @@ void printCat( const size_t index ){
         return;
     }
 
-    printf( "cat index = [%lu]: name = [%s], gender = [%s], breed = [%s], isFixed = [%d], weight = [%f], color1 = [%s], color2 = [%s], license = [%llu]", index, cats[index].name, genderCat( cats[index].gender ), breedCat( cats[index].breed ), cats[index].isFixed, cats[index].weight, colorCat( cats[index].collarColor1 ), colorCat( cats[index].collarColor2 ), cats[index].license );
+    printf( "cat index = [%lu]: name = [%s], gender = [%s], breed = [%s], isFixed = [%d], weight = [%f], color1 = [%s], color2 = [%s], license = [%llu] \n", index, cats[index].name, genderCat( cats[index].gender ), breedCat( cats[index].breed ), cats[index].isFixed, cats[index].weight, colorCat( cats[index].collarColor1 ), colorCat( cats[index].collarColor2 ), cats[index].license );
 }
 
 size_t findCat( const char* name ){
