@@ -16,17 +16,13 @@
 
 #include "Cat.h"
 
-#define MAX_CATS (30)
-#define MAX_CAT_NAME (30)
 
 
 
 
 extern NumCats numCats;
 
-enum Genders { Male, Female, Unknown };
-enum Breeds { UNKNOWN_BREED, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX };
-enum Color { Black, White, Red, Blue, Green, Pink };
+
 
 struct Cat {
     char                    name[MAX_CAT_NAME];

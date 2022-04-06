@@ -8,13 +8,20 @@
 /// @author Carl Domingo <carld20@hawaii.edu>
 /// @date   05_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
+#pragma once
 
 
+#define MAX_CATS (30)
 #define MAX_CAT_NAME (30)
 
 typedef float Weight;
-
 typedef size_t NumCats;
+const Weight UNKNOWN_WEIGHT = -1;
+
+
+enum Genders { Male, Female, Unknown };
+enum Breeds { UNKNOWN_BREED, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX };
+enum Color { Black, White, Red, Blue, Green, Pink };
 
 class Cat {
 protected:
