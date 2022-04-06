@@ -11,6 +11,8 @@
 #pragma once
 
 
+#include <glob.h>
+
 #define MAX_CATS (30)
 #define MAX_CAT_NAME (30)
 
@@ -28,7 +30,7 @@ protected:
     char            name[MAX_CAT_NAME];
     enum Genders    gender;
     enum Breeds     breed;
-    bool            isFixed;
+    bool            isCatFixed;
     Weight          weight;
 
 public:
@@ -59,9 +61,10 @@ public:
     void setBreed( Breeds newBreed );
 
 public:
-    bool pront();
-    bool validate();
+    bool print();       //prints cat
+    bool validate();    //Checks if cat is good
 
+    //Check if new[Name, Gender, Breed, Weight] are valid
 public:
     static bool validateName( const char* newName );
     static bool validateGender( const Genders newGender );
@@ -69,3 +72,4 @@ public:
     static bool validateWeight( const Weight newWeight );
 
 };
+

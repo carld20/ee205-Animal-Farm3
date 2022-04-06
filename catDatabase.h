@@ -16,26 +16,7 @@
 
 #include "Cat.h"
 
-
-
-
-
-extern NumCats numCats;
-
-
-
-struct Cat {
-    char                    name[MAX_CAT_NAME];
-    enum Genders            gender;
-    enum Breeds             breed;
-    bool                    isFixed;
-    Weight                  weight;
-    enum Color              collarColor1;
-    enum Color              collarColor2;
-    unsigned long long      license;
-};
-
-extern struct Cat cats[MAX_CATS];
+extern Cat* catDatabaseHeadPointer;     //Head pointer
 
 //Implement initializeDatabase
 extern void initializeDatabase();
@@ -46,6 +27,10 @@ extern bool isFull();
 //Implement validateDatabase
 extern bool validateDatabase();
 
+//Check if aCat already exist
+extern bool isCatExist( const Cat* aCat );
+
+/*
 //Implement isIndexValid
 extern bool isIndexValid( const NumCats index );
 
@@ -59,4 +44,4 @@ extern bool isWeightValid( const Weight weight );
 extern void wipeCat( const NumCats index );
 
 //Implement swapCat
-extern bool swapCat( const NumCats x, const NumCats y);
+extern bool swapCat( const NumCats x, const NumCats y);*/
