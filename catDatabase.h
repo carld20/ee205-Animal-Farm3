@@ -14,13 +14,13 @@
 #include <stdbool.h>
 #include <stddef.h>
 
+#include "Cat.h"
+
 #define MAX_CATS (30)
 #define MAX_CAT_NAME (30)
 
 
-typedef float Weight;
 
-typedef size_t NumCats;
 
 extern NumCats numCats;
 
