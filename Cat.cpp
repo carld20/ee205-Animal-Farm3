@@ -92,9 +92,9 @@ bool Cat::print(){
     cout << left;
     cout << boolalpha;
     FORMAT_LINE( "Cat", "name" )            << getName() << endl;
-    FORMAT_LINE( "Cat", "gender" )          << genderName( getGender() ) << endl;
-    FORMAT_LINE( "Cat", "breed" )           << breedName( getBreed() ) << endl;
-    FORMAT_LINE( "Cat", "isFixed" )           << isFixed() << endl;
+    FORMAT_LINE( "Cat", "gender" )          << genderCat( getGender() ) << endl;
+    FORMAT_LINE( "Cat", "breed" )           << breedCat( getBreed() ) << endl;
+    FORMAT_LINE( "Cat", "isFixed" )         << isFixed() << endl;
     FORMAT_LINE( "Cat", "weoight" )         << getWeight() << endl;
 
     return true;

@@ -10,7 +10,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <string.h>
-#include <assert.h>
+#include <stdexcept>
+#include <cassert.h>
+#include <iostream>
 #include <stdio.h>
 
 #include <glob.h>
@@ -18,29 +20,55 @@
 
 #include "catDatabase.h"
 #include "reportCats.h"
+#include "Cat.h"
 
+using namespace std;
 
-struct Cat cats[MAX_CATS];
+int numberCats = 0;
 
-NumCats numCats = 0;
-
-//Reset database
-void initializeDatabase(){
-    numCats = 0;
-
-    memset( &cats, 0, sizeof( cats ) );
-}
+Cat* catDatabaseHeadPointer;
 
 //Checks if database is not negative
-bool validateDatabase(){
-#pragma GCC diagnostic push
-#pragma GCC diagnostinc ignored "-Wtype-limits"
-    assert( numCats >= 0 );
-#pragma GCC diagnostic pop
+extern bool validateDatabase(){
+    int validCats = 0;
+
+    for( Cat* iCat = catDatabaseHeadPointer; iCat != nullptr; iCat = iCat->next ){
+        if( !iCat->validate() ){
+            return false;
+
+        }
+
+        Cat* foundCat = findCatByName( iCat->getName ) ); //need to make findCatByName
+        if( foundCat != iCat-> ){
+            cout << "animalFarm2: Warning: Found a similar name ["<< iCat->getName() << "]" << endl;
+
+        }
+        validCats++;
+    }
+
+    if( validCats != numberCats ){
+        cout << "animalFarm2: Error: numberofCats [" << numberCats << "] does not equal [" << validCats << "]" << endl;
+
+        return false;
+
+    }
 
     return true;
 
 }
+
+//Reset database
+void initializeDatabase(){
+    if( catDatabaseHeadPointer != nullptr ){
+        throw logic_error(": delete old database first");
+
+    }
+
+    assert( validateDatabase() )
+
+}
+
+
 
 bool isFull(){
     validateDatabase();
