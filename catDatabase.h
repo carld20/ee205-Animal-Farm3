@@ -11,18 +11,16 @@
 
 #pragma once
 
-#include <stdbool.h>
-#include <stddef.h>
+#include <cstddef>
 
 #include "Cat.h"
 
 extern Cat* catDatabaseHeadPointer;     //Head pointer
+extern int totalCats;                   //Total cats in database
 
 //Implement initializeDatabase
 extern void initializeDatabase();
 
-//Implement isFull
-extern bool isFull();
 
 //Implement validateDatabase
 extern bool validateDatabase();
@@ -33,6 +31,9 @@ extern bool isCatExist( const Cat* aCat );
 /*
 //Implement isIndexValid
 extern bool isIndexValid( const NumCats index );
+
+//Implement isFull
+extern bool isFull();
 
 //Implement isNameValid
 extern bool isNameValid( const char* name );

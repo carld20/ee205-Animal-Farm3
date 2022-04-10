@@ -11,7 +11,7 @@
 
 #include <string.h>
 #include <stdexcept>
-#include <cassert.h>
+#include <assert.h>
 #include <iostream>
 #include <stdio.h>
 
@@ -38,8 +38,8 @@ extern bool validateDatabase(){
 
         }
 
-        Cat* foundCat = findCatByName( iCat->getName ) ); //need to make findCatByName
-        if( foundCat != iCat-> ){
+        Cat* foundCat = findCatByName( iCat->getName() ) ); //make findCatByName in reportCats
+        if( foundCat != iCat ){
             cout << "animalFarm2: Warning: Found a similar name ["<< iCat->getName() << "]" << endl;
 
         }
@@ -64,13 +64,27 @@ void initializeDatabase(){
 
     }
 
-    assert( validateDatabase() )
+    assert( validateDatabase() );
 
+}
+
+bool isCatExist( const Cat* aCat ){
+    assert( aCat != nullptr );
+
+    for( Cat* iCat = catDatabaseHeadPointer; iCat != nullptr; iCat = iCat->next ){
+        if( iCat == aCat ){
+            return true;
+
+        }
+    }
+    assert( validateDatabase());
+
+    return false; //if cat not found
 }
 
 
 
-bool isFull(){
+/*bool isFull(){
     validateDatabase();
     if( numCats >= MAX_CATS ){
         return true;
@@ -78,10 +92,10 @@ bool isFull(){
     else{
         return false;
     }
-}
+}*/
 
 //Check if index is ok
-extern bool isIndexValid( const NumCats index ){
+/*extern bool isIndexValid( const NumCats index ){
     if( index <= 0 ){
         return false;
     }
@@ -90,10 +104,10 @@ extern bool isIndexValid( const NumCats index ){
     }
     return true;
 
-}
+}*/
 
 //Check if name is ok
-bool isNameValid( const char* name ){
+/*bool isNameValid( const char* name ){
     if( name == NULL ){
         return false;
     }
@@ -102,26 +116,26 @@ bool isNameValid( const char* name ){
     }
 
     return true;
-}
+}*/
 
 //check if weight is ok
-bool isWeightValid( const Weight weight ){
+/*bool isWeightValid( const Weight weight ){
     if( weight <= 0 ){
         return false;
     }
     else{
         return true;
     }
-}
+}*/
 
 //Delete cat info
-void wipeCat(const NumCats index ){
+/*void wipeCat(const NumCats index ){
     assert( isIndexValid( index ) );
     memset( &cats[index], 0, sizeof( struct Cat ) );
-}
+}*/
 
 //swap cats' index
-bool swapCat( const NumCats x, const NumCats y ){
+/*bool swapCat( const NumCats x, const NumCats y ){
     if ( !isIndexValid( x ) ){
         return false;
     }
@@ -139,4 +153,4 @@ bool swapCat( const NumCats x, const NumCats y ){
     memcpy( &cats[y], &oldCat, sizeof( struct Cat ) );
 
     return true;
-}
+}*/
