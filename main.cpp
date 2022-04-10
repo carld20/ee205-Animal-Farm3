@@ -12,22 +12,25 @@
 //// @date   03/08/2022
 /////////////////////////////////////////////////////////////////////////////////
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <assert.h>
+#include <cstdlib>
+#include <cassert>
+#include <cstring>
+#include <iostream>
 
 #include "catDatabase.h"
 #include "reportCats.h"
 #include "deleteCats.h"
 #include "addCats.h"
-#include "updateCats.h"
+#inlcude "Cat.h"
+
+using namespace std;
 
 #define MAX_NAME1       "1234567890123456789012345678901234567890123456789"
 #define MAX_NAME2       "DIFFERENT 123456789012345678901234567890123456789"
 #define ILLEGAL_NAME    "12345678901234567890123456789012345678901234567890"
 
 int main() {
-    printf("Starting Animal Farm\n");
+    cout << "Starting Animal Farm2" << endl;
 
     addCat ("Dominick", Female,     MAINE_COON,     false, 15.0, Red,   Black, 101 ) ;
     addCat ("Seabass",  Unknown,    UNKNOWN_BREED,  true,   2.3, Black, Pink,  102 ) ;
