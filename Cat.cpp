@@ -57,19 +57,19 @@ const char *Cat::getName(){
 
 }
 
-void Cat::setname( const char *newName ){
+void Cat::setName( const char *newName ){
     validateName( newName );
     memset( name, 0 , MAX_CAT_NAME );
     strcpy( name, newName );
 
 }
 
-Genders Cat::setGender(){
+Genders Cat::getGender(){
     return gender;
 
 }
 
-Breeds Cat::setBreed() {
+Breeds Cat::getBreed() {
     return breed;
 
 }

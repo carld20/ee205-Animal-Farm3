@@ -11,14 +11,6 @@
 
 #pragma once
 
-#include "catDatabase.h"
+#include "Cat.h"
 
-extern unsigned int addCat (const char* newName,
-                            const enum Genders newGender,
-                            const enum Breeds newBreed,
-                            const bool newFixed,
-                            const Weight newWeight,
-                            const enum Color newCollarColor1,
-                            const enum Color newColllarColor2,
-                            const unsigned long long newLicense
-);
+extern bool addCat( Cat* newCat );

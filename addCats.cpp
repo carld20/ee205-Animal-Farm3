@@ -9,16 +9,18 @@
 /// @date   19_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <string.h>
-#include <stdio.h>
-#include <assert.h>
+#include <iostream>
+#include <cassert>
 #include <glob.h>
 
 #include "addCats.h"
 #include "catDatabase.h"
+#include "Cat.h"
+
+using namespace std;
 
 //Check if cat exists
-bool catExist(const char* newName ){
+/*bool catExist(const char* newName ){
     for( NumCats i = 0; i < numCats; i++ ) {
         if (strncmp(cats[i].name, newName, MAX_CAT_NAME) == 0) {
             return true; //cat exists
@@ -27,43 +29,26 @@ bool catExist(const char* newName ){
         return false;
 
     }
-}
+}located in catDatabase.cpp, isCatExist*/
 
 //Add to database
-unsigned int addCat ( const char* newName, const enum Genders newGender, const enum Breeds newBreed,const bool  newFixed,const Weight newWeight, const enum Color newCollarColor1, const enum Color newCollarColor2, const unsigned long long newLicense ) {
+bool addCat( Cat* newCat ) {
+    assert( newCat != nullptr );
+    newCat->validate();
 
-    //Check if ok to add cat to database
-    if( isFull() ){
-        return 1;
+    if( isCatExist( newCat ) ){
+        throw logic_error("Animal Farm2: Cat already exist in database, try a different name");
+
     }
 
-    if( !isNameValid( newName ) ){
-        return 1;
-    }
+    assert( validateDatabase() );
 
-    if( catExist ( newName ) ){
-        return 1;
-    }
+    newCat->next = catDatabaseHeadPointer;
+    catDatabaseHeadPointer = newCat;
+    totalCats++;
 
-    if( !isWeightValid( newWeight ) ){
-        return 1;
-    }
+    assert( validateDatabase() );
 
-    assert ( validateDatabase() == true );
+    return true;//if successful
 
-    NumCats index = numCats;
-
-    strncpy( cats[index].name, newName, MAX_CAT_NAME );
-    cats[index].gender              = newGender;
-    cats[index].breed               = newBreed;
-    cats[index].isFixed             = newFixed;
-    cats[index].weight              = newWeight;
-    cats[index].collarColor1        = newCollarColor1;
-    cats[index].collarColor2        = newCollarColor2;
-    cats[index].license             = newLicense;
-
-    numCats += 1; //Add one to total number of cats in database
-
-    assert( validateDatabase() == true );
-    return index;
 }
