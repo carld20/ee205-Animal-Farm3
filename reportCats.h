@@ -11,14 +11,11 @@
 
 #pragma once
 
-#include <glob.h>
-#include "catDatabase.h"
+#include "Cat.h"
 
-#define NULL 0
-
-extern void printCat(  const NumCats index );
-extern void printAllCats();
-extern NumCats findCat( const char* name );
+//extern void printCat(  const NumCats index );
+extern bool printAllCats();
+extern Cat* findCatByName( const char* name );
 extern const char* genderCat( const enum Genders gender );
 extern const char* breedCat(  const enum Breeds breed );
 extern const char* colorCat(  const enum Color color );
