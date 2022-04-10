@@ -9,40 +9,55 @@
 /// @date   19_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <stdio.h>
-#include <assert.h>
-#include <glob.h>
+#include <cassert>
+#include <iostream>
+#include <stdexcept>
 
 #include "deleteCats.h"
 #include "catDatabase.h"
+#include "Cat.h"
 
-bool deleteCat( const NumCats index ){
-    if( !isIndexValid( index ) ){
-        return false;
+using namespace std;
+
+
+bool deleteCat( Cat* removeCat ){
+    assert( removeCat != nullptr );
+    assert( validateDatabase() );
+
+    if( removeCat == catDatabaseHeadPointer ) {
+        catDatabaseHeadPointer = catDatabaseHeadPointer->next;
+        delete removeCat;
+        totalCats--;
+
+        assert(validateDatabase());
+        return true;//if successful
     }
-    if( numCats == 0 ) {
-        return true;
-    }
 
-    assert ( validateDatabase() == true );
+        Cat* iCat = catDatabaseHeadPointer;
+        while( iCat != nullptr ){
+            if( iCat->next == removeCat ){
+                iCat->next = removeCat->next;
+                delete removeCat;
+                totalCats--;
 
+                assert( validateDatabase() );
+                return true;
 
-    swapCat( index, numCats - 1 ); //Swap last cat with delete cat
-    wipeCat( numCats - 1 );
+            }
+            iCat = iCat->next;
 
-    numCats -= 1;
+        }
 
-    assert( validateDatabase() == true );
-
-    return true;
+    assert( validateDatabase() );
+    throw invalid_argument( "Animal Farm2: cat name does not exist, can't be deleted");
 
 }
 
-bool deleteAllCats(){
-    while( numCats != 0 ){
-        deleteCat( 0 );
-    }
+bool deleteAllCats() {
+    while( catDatabaseHeadPointer != nullptr ){
+        deleteCat( catDatabaseHeadPointer );
 
-    numCats = 0;
+    }
     return true;
+
 }

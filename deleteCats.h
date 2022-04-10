@@ -11,5 +11,8 @@
 
 #pragma once
 
+#include "Cat.h"
+
+
 extern bool deleteAllCats();
-extern bool deleteCat( const size_t index );
+extern bool deleteCat( Cat* removeCat );
