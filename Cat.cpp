@@ -119,13 +119,13 @@ bool Cat::validate() {
 
 bool Cat::validateName( const char *newName ){
     if( newName == nullptr ) {
-        throw invalid_argument(": name must not be NULL");
+        throw invalid_argument("Animal Farm2: name must not be NULL");
     }
     if( strlen(newName) <= 0 ) {
-        throw invalid_argument(": name must be > 0");
+        throw invalid_argument("Animal Farm2: name must be > 0");
     }
     if(strlen(newName) >= MAX_CAT_NAME) {
-        throw invalid_argument(": name must be less than 30");
+        throw invalid_argument("Animal Farm2: name must be less than 30");
     }
 
     return true;
@@ -134,7 +134,7 @@ bool Cat::validateName( const char *newName ){
 
 bool Cat::validateGender( const Genders newGender ){
     if ( newGender == Unknown ) {
-        throw invalid_argument(": gender must be specified");
+        throw invalid_argument("Animal Farm2: gender must be specified");
     }
 
     return true;
@@ -143,7 +143,7 @@ bool Cat::validateGender( const Genders newGender ){
 
 bool Cat::validateWeight(const Weight newWeight) {
     if(newWeight <= 0 ) {
-        throw invalid_argument(": no weight is not possible");
+        throw invalid_argument("Animal Farm2: no weight is not possible");
 
     }
 
@@ -153,7 +153,7 @@ bool Cat::validateWeight(const Weight newWeight) {
 
 bool Cat::validateBreed(const Breeds newBreed) {
     if(newBreed == UNKNOWN_BREED ){
-        throw invalid_argument(": breed must be specified");
+        throw invalid_argument("Animal Farm2: breed must be specified");
 
     }
 
@@ -174,7 +174,7 @@ void Cat::setWeight(Weight newWeight) {
 
 void Cat::setGender(Genders newGender) {
     if( gender != Unknown ) {
-        throw logic_error(": gender is set, can't be changed");
+        throw logic_error("Animal Farm2: gender is set, can't be changed");
 
     }
 
@@ -185,7 +185,7 @@ void Cat::setGender(Genders newGender) {
 
 void Cat::setBreed( Breeds newBreed ){
     if( breed != UNKNOWN_BREED ){
-        throw logic_error(": breed is set, can't be changed");
+        throw logic_error("Animal Farm2: breed is set, can't be changed");
 
     }
 

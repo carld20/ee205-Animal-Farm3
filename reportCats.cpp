@@ -34,13 +34,6 @@ bool printAllCats(){
     return true;  //true if successfull
 
 }
-/*void printCat( const NumCats index ){
-    if( !isIndexValid( index ) ){
-        return;
-    }
-
-    printf( "cat index = [%lu]: name = [%s], gender = [%s], breed = [%s], isFixed = [%d], weight = [%f], color1 = [%s], color2 = [%s], license = [%llu] \n", index, cats[index].name, genderCat( cats[index].gender ), breedCat( cats[index].breed ), cats[index].isFixed, cats[index].weight, colorCat( cats[index].collarColor1 ), colorCat( cats[index].collarColor2 ), cats[index].license );
-}*/
 
 Cat* findCatByName( const char* name ){
     assert( Cat().validateName( name ) );
@@ -105,3 +98,11 @@ const char* colorCat( const enum Color color ){
     throw logic_error("Animal Farm2: color name not mapped to string value");
 
 }
+
+/*void printCat( const NumCats index ){
+    if( !isIndexValid( index ) ){
+        return;
+    }
+
+    printf( "cat index = [%lu]: name = [%s], gender = [%s], breed = [%s], isFixed = [%d], weight = [%f], color1 = [%s], color2 = [%s], license = [%llu] \n", index, cats[index].name, genderCat( cats[index].gender ), breedCat( cats[index].breed ), cats[index].isFixed, cats[index].weight, colorCat( cats[index].collarColor1 ), colorCat( cats[index].collarColor2 ), cats[index].license );
+}*/

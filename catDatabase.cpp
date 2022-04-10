@@ -9,14 +9,11 @@
 /// @date   19_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <string.h>
+#include <cstring>
 #include <stdexcept>
-#include <assert.h>
+#include <cassert>
 #include <iostream>
-#include <stdio.h>
-
-#include <glob.h>
-
+#include <cstdio>
 
 #include "catDatabase.h"
 #include "reportCats.h"
@@ -40,14 +37,14 @@ extern bool validateDatabase(){
 
         Cat* foundCat = findCatByName( iCat->getName() ) ); //make findCatByName in reportCats
         if( foundCat != iCat ){
-            cout << "animalFarm2: Warning: Found a similar name ["<< iCat->getName() << "]" << endl;
+            cout << "Animal Farm2: Warning: Found a similar name ["<< iCat->getName() << "]" << endl;
 
         }
         validCats++;
     }
 
     if( validCats != numberCats ){
-        cout << "animalFarm2: Error: numberofCats [" << numberCats << "] does not equal [" << validCats << "]" << endl;
+        cout << "Animal Farm2: Error: numberofCats [" << numberCats << "] does not equal [" << validCats << "]" << endl;
 
         return false;
 
@@ -60,7 +57,7 @@ extern bool validateDatabase(){
 //Reset database
 void initializeDatabase(){
     if( catDatabaseHeadPointer != nullptr ){
-        throw logic_error(": delete old database first");
+        throw logic_error("Animal Farm2: delete old database first");
 
     }
 

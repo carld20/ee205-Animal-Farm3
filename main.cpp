@@ -21,7 +21,7 @@
 #include "reportCats.h"
 #include "deleteCats.h"
 #include "addCats.h"
-#inlcude "Cat.h"
+#include "Cat.h"
 
 using namespace std;
 
