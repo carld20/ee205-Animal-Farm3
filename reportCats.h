@@ -13,7 +13,6 @@
 
 #include "Cat.h"
 
-//extern void printCat(  const NumCats index );
 extern bool printAllCats();
 extern Cat* findCatByName( const char* name );
 extern const char* genderCat( const enum Genders gender );

@@ -27,21 +27,3 @@ extern bool validateDatabase();
 //Check if aCat already exist
 extern bool isCatExist( const Cat* aCat );
 
-/*
-//Implement isIndexValid
-extern bool isIndexValid( const NumCats index );
-
-//Implement isFull
-extern bool isFull();
-
-//Implement isNameValid
-extern bool isNameValid( const char* name );
-
-//Implement isWeightValid
-extern bool isWeightValid( const Weight weight );
-
-//Implement wipeCat
-extern void wipeCat( const NumCats index );
-
-//Implement swapCat
-extern bool swapCat( const NumCats x, const NumCats y);*/

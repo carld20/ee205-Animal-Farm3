@@ -13,6 +13,5 @@
 
 #include "Cat.h"
 
-
 extern bool deleteAllCats();
 extern bool deleteCat( Cat* removeCat );

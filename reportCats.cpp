@@ -11,7 +11,6 @@
 
 #include <cstring>
 #include <stdexcept>
-#include <iostream>
 #include <cassert>
 
 #include "reportCats.h"
@@ -99,10 +98,3 @@ const char* colorCat( const enum Color color ){
 
 }
 
-/*void printCat( const NumCats index ){
-    if( !isIndexValid( index ) ){
-        return;
-    }
-
-    printf( "cat index = [%lu]: name = [%s], gender = [%s], breed = [%s], isFixed = [%d], weight = [%f], color1 = [%s], color2 = [%s], license = [%llu] \n", index, cats[index].name, genderCat( cats[index].gender ), breedCat( cats[index].breed ), cats[index].isFixed, cats[index].weight, colorCat( cats[index].collarColor1 ), colorCat( cats[index].collarColor2 ), cats[index].license );
-}*/

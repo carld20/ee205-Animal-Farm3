@@ -11,7 +11,6 @@
 
 #include <iostream>
 #include <cassert>
-#include <glob.h>
 
 #include "addCats.h"
 #include "catDatabase.h"
@@ -19,19 +18,8 @@
 
 using namespace std;
 
-//Check if cat exists
-/*bool catExist(const char* newName ){
-    for( NumCats i = 0; i < numCats; i++ ) {
-        if (strncmp(cats[i].name, newName, MAX_CAT_NAME) == 0) {
-            return true; //cat exists
-        }
 
-        return false;
-
-    }
-}located in catDatabase.cpp, isCatExist*/
-
-//Add to database
+//New addCat function
 bool addCat( Cat* newCat ) {
     assert( newCat != nullptr );
     newCat->validate();

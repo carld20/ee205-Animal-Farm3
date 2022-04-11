@@ -9,11 +9,9 @@
 /// @date   19_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <cstring>
 #include <stdexcept>
 #include <cassert>
 #include <iostream>
-#include <cstdio>
 
 #include "catDatabase.h"
 #include "reportCats.h"
@@ -35,7 +33,7 @@ extern bool validateDatabase(){
 
         }
 
-        Cat* foundCat = findCatByName( iCat->getName() ) ; //make findCatByName in reportCats
+        Cat* foundCat = findCatByName( iCat->getName() ) ; //make findCatByName in reportCats; done
         if( foundCat != iCat ){
             cout << "Animal Farm2: Warning: Found a similar name ["<< iCat->getName() << "]" << endl;
 
@@ -78,76 +76,3 @@ bool isCatExist( const Cat* aCat ){
 
     return false; //if cat not found
 }
-
-
-
-/*bool isFull(){
-    validateDatabase();
-    if( numCats >= MAX_CATS ){
-        return true;
-    }
-    else{
-        return false;
-    }
-}*/
-
-//Check if index is ok
-/*extern bool isIndexValid( const NumCats index ){
-    if( index <= 0 ){
-        return false;
-    }
-    if( index >= numCats ) {
-        return false;
-    }
-    return true;
-
-}*/
-
-//Check if name is ok
-/*bool isNameValid( const char* name ){
-    if( name == NULL ){
-        return false;
-    }
-    if( strlen( name ) > MAX_CAT_NAME - 1 ){
-        return false;
-    }
-
-    return true;
-}*/
-
-//check if weight is ok
-/*bool isWeightValid( const Weight weight ){
-    if( weight <= 0 ){
-        return false;
-    }
-    else{
-        return true;
-    }
-}*/
-
-//Delete cat info
-/*void wipeCat(const NumCats index ){
-    assert( isIndexValid( index ) );
-    memset( &cats[index], 0, sizeof( struct Cat ) );
-}*/
-
-//swap cats' index
-/*bool swapCat( const NumCats x, const NumCats y ){
-    if ( !isIndexValid( x ) ){
-        return false;
-    }
-    if( !isIndexValid( y ) ){
-        return false;
-    }
-    if( x == y ){
-        return true;
-    }
-
-    struct Cat oldCat;
-
-    memcpy( &oldCat, &cats[x], sizeof( struct Cat ) );
-    memcpy( &cats[x], &cats[y], sizeof( struct Cat ) );
-    memcpy( &cats[y], &oldCat, sizeof( struct Cat ) );
-
-    return true;
-}*/
