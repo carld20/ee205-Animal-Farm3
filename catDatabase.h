@@ -16,7 +16,6 @@
 #include "Cat.h"
 
 extern Cat* catDatabaseHeadPointer;     //Head pointer
-extern int totalCats;                   //Total cats in database
 
 //Implement initializeDatabase
 extern void initializeDatabase();

@@ -20,6 +20,7 @@ typedef float Weight;
 typedef size_t NumCats;
 const Weight UNKNOWN_WEIGHT = -1;
 
+int totalCats = 0;                   //Total cats in database
 
 enum Genders { Male, Female, Unknown };
 enum Breeds { UNKNOWN_BREED, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX };

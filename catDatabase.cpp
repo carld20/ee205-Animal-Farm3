@@ -35,7 +35,7 @@ extern bool validateDatabase(){
 
         }
 
-        Cat* foundCat = findCatByName( iCat->getName() ) ); //make findCatByName in reportCats
+        Cat* foundCat = findCatByName( iCat->getName() ) ; //make findCatByName in reportCats
         if( foundCat != iCat ){
             cout << "Animal Farm2: Warning: Found a similar name ["<< iCat->getName() << "]" << endl;
 
