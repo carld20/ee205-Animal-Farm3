@@ -20,7 +20,6 @@ extern Cat* catDatabaseHeadPointer;     //Head pointer
 //Implement initializeDatabase
 extern void initializeDatabase();
 
-
 //Implement validateDatabase
 extern bool validateDatabase();
 

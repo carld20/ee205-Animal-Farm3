@@ -19,7 +19,8 @@ typedef float Weight;
 typedef size_t NumCats;
 const Weight UNKNOWN_WEIGHT = -1;
 
-int totalCats = 0;                   //Total cats in database
+extern int totalCats = 0;                   //Total cats in database
+
 
 enum Genders { Male, Female, Unknown };
 enum Breeds { UNKNOWN_BREED, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX };
@@ -45,13 +46,13 @@ public:
     virtual ~Cat();
 
 public:
-    const char *getName();
+    const char *getName() const noexcept;
     void setName( const char* newName );
-    Genders getGender();
-    Breeds getBreed();
-    bool isFixed();
-    void fixCat();
-    Weight getWeight();
+    Genders getGender() const noexcept;
+    Breeds getBreed() const noexcept;
+    bool isFixed() const noexcept;
+    void fixCat() noexcept;
+    Weight getWeight() const noexcept;
     void setWeight( Weight newWeight );
 
 
@@ -61,8 +62,8 @@ public:
     void setBreed( Breeds newBreed );
 
 public:
-    bool print();       //prints cat
-    bool validate();    //Checks if cat is good
+    bool print() const noexcept;       //prints cat
+    bool validate() const noexcept;    //Checks if cat is good
 
     //Check if new[Name, Gender, Breed, Weight] are valid
 public:

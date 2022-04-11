@@ -30,6 +30,7 @@ void Cat::zeroOutMember() {
     weight = UNKNOWN_WEIGHT;
     next = nullptr;
 
+
 }
 
 Cat::Cat(){
@@ -52,7 +53,7 @@ Cat::~Cat(){
 
 }
 
-const char *Cat::getName(){
+const char *Cat::getName() const noexcept{
     return name;
 
 }
@@ -64,27 +65,27 @@ void Cat::setName( const char *newName ){
 
 }
 
-Genders Cat::getGender(){
+Genders Cat::getGender() const noexcept{
     return gender;
 
 }
 
-Breeds Cat::getBreed() {
+Breeds Cat::getBreed() const noexcept {
     return breed;
 
 }
 
-bool Cat::isFixed(){
+bool Cat::isFixed() const noexcept {
     return isCatFixed;
 
 }
 
-Weight Cat::getWeight(){
+Weight Cat::getWeight() const noexcept {
     return weight;
 
 }
 
-bool Cat::print(){
+bool Cat::print() const noexcept {
     assert( validate() );
 
     cout << setw(80) << setfill('=') << "" << endl;
@@ -101,7 +102,7 @@ bool Cat::print(){
 
 }
 
-bool Cat::validate() {
+bool Cat::validate() const noexcept {
     try {
         validateName(name);
         validateWeight(weight);
@@ -161,7 +162,7 @@ bool Cat::validateBreed(const Breeds newBreed) {
 
 }
 
-void Cat::fixCat(){
+void Cat::fixCat() noexcept{
     Cat::isCatFixed = true;
 
 }
