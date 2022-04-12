@@ -111,7 +111,7 @@ int main() {
     result = addCat( new Cat( "Dominick", Female, MAINE_COON, 15.0 )) ;
     assert( result ) ;
     if( !result ) throw logic_error ("Animal Farm2: addCat() failed" ) ;
-    result = addCat( new Cat( "Seabass", Unknown, UNKNOWN_BREED , 2.3 )) ;
+    result = addCat( new Cat( "Seabass", Male, PERSIAN , 2.3 )) ;
     assert( result ) ;
     result = addCat( new Cat( "Brae", Female, PERSIAN, 19.7 )) ;
     assert( result ) ;

@@ -96,7 +96,7 @@ bool Cat::print() const noexcept {
     FORMAT_LINE( "Cat", "gender" )          << genderCat( getGender() ) << endl;
     FORMAT_LINE( "Cat", "breed" )           << breedCat( getBreed() ) << endl;
     FORMAT_LINE( "Cat", "isFixed" )         << isFixed() << endl;
-    FORMAT_LINE( "Cat", "weoight" )         << getWeight() << endl;
+    FORMAT_LINE( "Cat", "weight" )         << getWeight() << endl;
 
     return true;
 

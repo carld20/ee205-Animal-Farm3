@@ -19,7 +19,7 @@
 
 using namespace std;
 
-int numberCats = 0;
+int totalCats = 0;
 
 Cat* catDatabaseHeadPointer;
 
@@ -41,8 +41,8 @@ extern bool validateDatabase(){
         validCats++;
     }
 
-    if( validCats != numberCats ){
-        cout << "Animal Farm2: Error: numberofCats [" << numberCats << "] does not equal [" << validCats << "]" << endl;
+    if( validCats != totalCats ){
+        cout << "Animal Farm2: Error: numberofCats [" << totalCats << "] does not equal [" << validCats << "]" << endl;
 
         return false;
 
@@ -72,7 +72,7 @@ bool isCatExist( const Cat* aCat ){
 
         }
     }
-    assert( validateDatabase());
+    assert( validateDatabase() );
 
     return false; //if cat not found
 }

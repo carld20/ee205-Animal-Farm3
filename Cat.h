@@ -8,6 +8,7 @@
 /// @author Carl Domingo <carld20@hawaii.edu>
 /// @date   05_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
+
 #pragma once
 
 #include <glob.h>
@@ -18,8 +19,6 @@
 typedef float Weight;
 typedef size_t NumCats;
 const Weight UNKNOWN_WEIGHT = -1;
-
-extern int totalCats = 0;                   //Total cats in database
 
 
 enum Genders { Male, Female, Unknown };
