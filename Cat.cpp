@@ -104,7 +104,7 @@ bool Cat::print() const noexcept {
     FORMAT_LINE( "Cat", "breed" )           << breedCat( getBreed() ) << endl;
     FORMAT_LINE( "Cat", "isFixed" )         << isFixed() << endl;
     FORMAT_LINE( "Cat", "weight" )          << getWeight() << endl;
-    FORMAT_LINE( "Cat", "collar color" )    << getCollarColor() << endl;
+    FORMAT_LINE( "Cat", "collar color" )    << colorCat( getCollarColor() ) << endl;
 
     return true;
 
@@ -116,6 +116,7 @@ bool Cat::validate() const noexcept {
         validateWeight(weight);
         validateGender(gender);
         validateBreed(breed);
+        validateCollarColor( collarColor );
     } catch (exception const& e ) {
         cout << e.what() << endl;
         return false;
