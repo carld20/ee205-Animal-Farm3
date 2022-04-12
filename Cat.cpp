@@ -28,6 +28,7 @@ void Cat::zeroOutMember() {
     breed = UNKNOWN_BREED;
     isCatFixed = false;
     weight = UNKNOWN_WEIGHT;
+    collarColor = Clear;
     next = nullptr;
 
 
@@ -38,11 +39,12 @@ Cat::Cat(){
 
 }
 
-Cat::Cat( const char *newName, const Genders newGender, const Breeds newBreed, const Weight newWeight ) : Cat(){
+Cat::Cat( const char *newName, const Genders newGender, const Breeds newBreed, const Weight newWeight, const Colors newCollarColor  ) : Cat(){
     setName( newName );
     setWeight( newWeight );
     setBreed( newBreed );
     setGender( newGender );
+    setCollarColor( newCollarColor );
 
     assert(validate());
 
@@ -85,6 +87,11 @@ Weight Cat::getWeight() const noexcept {
 
 }
 
+Colors Cat::getCollarColor() const noexcept {
+    return collarColor;
+
+}
+
 bool Cat::print() const noexcept {
     assert( validate() );
 
@@ -96,7 +103,8 @@ bool Cat::print() const noexcept {
     FORMAT_LINE( "Cat", "gender" )          << genderCat( getGender() ) << endl;
     FORMAT_LINE( "Cat", "breed" )           << breedCat( getBreed() ) << endl;
     FORMAT_LINE( "Cat", "isFixed" )         << isFixed() << endl;
-    FORMAT_LINE( "Cat", "weight" )         << getWeight() << endl;
+    FORMAT_LINE( "Cat", "weight" )          << getWeight() << endl;
+    FORMAT_LINE( "Cat", "collar color" )    << getCollarColor() << endl;
 
     return true;
 
@@ -142,16 +150,6 @@ bool Cat::validateGender( const Genders newGender ){
 
 }
 
-bool Cat::validateWeight(const Weight newWeight) {
-    if(newWeight <= 0 ) {
-        throw invalid_argument("Animal Farm2: no weight is not possible");
-
-    }
-
-    return true;
-
-}
-
 bool Cat::validateBreed(const Breeds newBreed) {
     if(newBreed == UNKNOWN_BREED ){
         throw invalid_argument("Animal Farm2: breed must be specified");
@@ -162,15 +160,40 @@ bool Cat::validateBreed(const Breeds newBreed) {
 
 }
 
+bool Cat::validateWeight(const Weight newWeight) {
+    if(newWeight <= 0 ) {
+        throw invalid_argument("Animal Farm2: no weight is not possible");
+
+    }
+
+    return true;
+
+}
+
+bool Cat::validateCollarColor(const Colors newCollarColor) {
+    if( newCollarColor == Clear ){
+        throw invalid_argument("Animal Farm2: collar color must not be clear");
+    }
+
+    return true;
+}
+
+
+
 void Cat::fixCat() noexcept{
     Cat::isCatFixed = true;
 
 }
 
 void Cat::setWeight(Weight newWeight) {
-    validateWeight(newWeight);
+    validateWeight( newWeight );
     Cat::weight = newWeight;
 
+}
+
+void Cat::setCollarColor(Colors newCollarColor) {
+    validateCollarColor( newCollarColor );
+    Cat::collarColor = newCollarColor;
 }
 
 void Cat::setGender(Genders newGender) {

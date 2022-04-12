@@ -63,7 +63,7 @@ const char* genderCat( const enum Genders gender ){
 const char* breedCat( const enum Breeds breed ){
     switch( breed ) {
         case UNKNOWN_BREED:
-            return "Uknown breed";
+            return "Unknown breed";
         case MAINE_COON:
             return "Maine Coon";
         case MANX:
@@ -79,8 +79,8 @@ const char* breedCat( const enum Breeds breed ){
 
 }
 
-const char* colorCat( const enum Color color ){
-    switch( color ) {
+const char* colorCat( const enum Colors collarColor ){
+    switch( collarColor ) {
         case Black:
             return "Black";
         case White:
@@ -93,6 +93,8 @@ const char* colorCat( const enum Color color ){
             return "Green";
         case Pink:
             return "Pink";
+        case Clear:
+            return "Clear";
     }
     throw logic_error("Animal Farm2: color name not mapped to string value");
 

@@ -23,7 +23,7 @@ const Weight UNKNOWN_WEIGHT = -1;
 
 enum Genders { Male, Female, Unknown };
 enum Breeds { UNKNOWN_BREED, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX };
-enum Color { Black, White, Red, Blue, Green, Pink };
+enum Colors { Black, White, Red, Blue, Green, Pink, Clear };
 
 class Cat {
 protected:
@@ -32,6 +32,7 @@ protected:
     enum Breeds     breed;
     bool            isCatFixed;
     Weight          weight;
+    enum Colors     collarColor;
 
 public:
     Cat*            next;   //Next pointer
@@ -41,7 +42,7 @@ private:
 
 public:
     Cat();
-    Cat( const char *newName, const Genders newGender, const Breeds newBreed, const Weight newWeight );
+    Cat( const char *newName, const Genders newGender, const Breeds newBreed, const Weight newWeight, const Colors newCollarColor );
     virtual ~Cat();
 
 public:
@@ -53,6 +54,8 @@ public:
     void fixCat() noexcept;
     Weight getWeight() const noexcept;
     void setWeight( Weight newWeight );
+    Colors getCollarColor() const noexcept;
+    void setCollarColor( Colors newCollarColor );
 
 
 protected:
@@ -70,6 +73,8 @@ public:
     static bool validateGender( const Genders newGender );
     static bool validateBreed( const Breeds newBreed );
     static bool validateWeight( const Weight newWeight );
+    static bool validateCollarColor( const Colors newCollarColor );
+
 
 };
 
