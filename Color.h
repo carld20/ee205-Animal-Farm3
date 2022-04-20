@@ -17,7 +17,7 @@
 using namespace std;
 
 enum class Color{
-    UNKNOWN_COLOR=0,
+    Unknown_Color=0,
     BLACK,
     BROWN,
     WHITE,
@@ -30,9 +30,9 @@ enum class Color{
     CALICO
 };
 
-inline std::ostream& operator<<( std::ostream& lhs_stream, const Color& rhs_Color ) {
+inline ostream& operator<<( ostream& lhs_stream, const Color& rhs_Color ) {
     switch( rhs_Color ) {
-        case Color::UNKNOWN_COLOR:
+        case Color::Unknown_Color:
             lhs_stream << "Unknown color";
             break;
         case Color::BLACK:
