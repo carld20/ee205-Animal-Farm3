@@ -30,7 +30,7 @@ inline ostream& operator<<( ostream& lhs_stream, const Gender& rhs_Gender ){
             lhs_stream << "Male";
             break;
         default:
-            throw out_of_range( "Animal Farm3: Gender not mapped to a strig" );
+            throw out_of_range( "Animal Farm3: Gender not mapped to a string" );
     }
     return lhs_stream;
 }
