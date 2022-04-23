@@ -22,6 +22,8 @@
 
 using namespace std;
 
+const string Cat::SPECIES_NAME = "Felic Catus";
+
 void Cat::zeroOutMember() {
     memset(name, 0, MAX_CAT_NAME);
     gender = Unknown;

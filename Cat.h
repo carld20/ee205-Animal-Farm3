@@ -13,68 +13,65 @@
 
 #include <glob.h>
 
+#include "Mammal.h"
+
 #define MAX_CATS (30)
 #define MAX_CAT_NAME (30)
 
-typedef float Weight;
-typedef size_t NumCats;
-const Weight UNKNOWN_WEIGHT = -1;
+using namespace std;
+typedef float t_weight;
+const t_weight UNKNOWN_WEIGHT = -1;
 
 
-enum Genders { Male, Female, Unknown };
-enum Breeds { UNKNOWN_BREED, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX };
-enum Colors { Black, White, Red, Blue, Green, Pink, Clear };
+class Cat : public Mammal {
+public:
+    static const string SPECIES_NAME;
+    static const Weight::t_weight MAX_WEIGHT;
 
-class Cat {
 protected:
-    char            name[MAX_CAT_NAME];
-    enum Genders    gender;
-    enum Breeds     breed;
-    bool            isCatFixed;
-    Weight          weight;
-    enum Colors     collarColor;
+    string name;
+    bool isCatFixed;
 
 public:
-    Cat*            next;   //Next pointer
+    //create cat w/min fields
+    explicit Cat( const string* newName ) : Mammal( MAX_WEIGHT, SPECIES_NAME ){
+        if ( !validateName( newName )) {
+            throw out_of_range("Cat needs a name");
+        }
+        name = newName;
+        isCatFixed = false;
 
-private:
-    void zeroOutMember();
+        Cat::validate();
+    }
+
+    Cat( const string&              newName,
+         const Color                newColor,
+         const bool                 newIsFixed,
+         const Gender               newGender,
+         const Weight::t_weight     newWeight
+         ) : Mammal( newColor, newGender, newWeight, MAX_WEIGHT, SPECIES_NAME ){
+            if( !validateName( newName ) ){
+                throw out_of_range(" Cat needs a name");
+            }
+            name = newName;
+            isCatFixed = newIsFixed;
+
+            Cat::validate();
+    }
 
 public:
-    Cat();
-    Cat( const char *newName, const Genders newGender, const Breeds newBreed, const Weight newWeight, const Colors newCollarColor );
-    virtual ~Cat();
+    string getName() const noexcept;    //get cat name
+    void setName( const string& newName );  //Set cat name, can't be empty
 
-public:
-    const char *getName() const noexcept;
-    void setName( const char* newName );
-    Genders getGender() const noexcept;
-    Breeds getBreed() const noexcept;
     bool isFixed() const noexcept;
     void fixCat() noexcept;
-    Weight getWeight() const noexcept;
-    void setWeight( Weight newWeight );
-    Colors getCollarColor() const noexcept;
-    void setCollarColor( Colors newCollarColor );
-
-
-protected:
-public:
-    void setGender( Genders newGender );
-    void setBreed( Breeds newBreed );
 
 public:
-    bool print() const noexcept;       //prints cat
-    bool validate() const noexcept;    //Checks if cat is good
+    string speak() const noexcept override; //have cat speak 'meow'
+    void dump() const noexcept  override ;  //print cat
+    bool validate() const noexcept override;    //check if everything is fine
 
-    //Check if new[Name, Gender, Breed, Weight] are valid
 public:
-    static bool validateName( const char* newName );
-    static bool validateGender( const Genders newGender );
-    static bool validateBreed( const Breeds newBreed );
-    static bool validateWeight( const Weight newWeight );
-    static bool validateCollarColor( const Colors newCollarColor );
-
-
-};
+    static bool validateName( const string& newName );  //check newName is good
+}
 

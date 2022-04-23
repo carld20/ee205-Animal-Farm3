@@ -11,6 +11,7 @@
 #pragma once
 
 #include <string>
+#include <iomanip>
 
 #include "Node.h"
 #include "Gender.h"
@@ -19,40 +20,44 @@
 using namespace std;
 
 #define PRINT_HEADING_DUMP \
-cout << setw(80) << setfill('=') << "" << endl
+    cout << setw(80) << setfill( '=' ) << "" << endl
 
-#define FORMAT_LINE_DUMP( className, member ) \
-    cout << setfill(' ' ) << left << boolalpha << setw(8) << (className) << setw(20) << (member) << setw(52)
-
-
+#define FORMAT_LINE_DUMP( className, member )         \
+    cout << setfill( ' ' ) \
+              << left \
+              << boolalpha \
+              << setw( 8) << (className)             \
+              << setw(20) << (member)                \
+              << setw(52)
 
 class Animal : public Node {
 public:
-    static const std::string KINGDOM_NAME;
+    static const string KINGDOM_NAME;
 
 private:
-    std::string species;
-    std::string classification;
+    string species;
+    string classification;
     Gender gender = Gender::Unknown_Gender;
     Weight weight;
 
 public:
+    //create animal w/min req fields
     Animal( const Weight::t_weight newMaxWeight
-            ,const std::string&     newClassification
-            ,const std::string&     newSpecies
+            ,const string&     newClassification
+            ,const string&     newSpecies
     );
-
+    //create animal w/all fields
     Animal( const Gender           newGender
             ,const Weight::t_weight newWeight
             ,const Weight::t_weight newMaxWeight
-            ,const std::string&     newClassification
-            ,const std::string&     newSpecies
+            ,const string&     newClassification
+            ,const string&     newSpecies
     );
 
 public:
-    std::string getKingdom() const noexcept;
-    std::string getClassification() const noexcept;
-    std::string getSpecies() const noexcept;
+    string getKingdom() const noexcept;
+    string getClassification() const noexcept;
+    string getSpecies() const noexcept;
 
     Gender getGender() const noexcept;
 
@@ -67,7 +72,7 @@ protected:
     void setGender( const Gender newGender);
 
 public:
-    virtual std::string speak() const noexcept = 0;
+    virtual string speak() const noexcept = 0;
 
 public:
     void dump() const noexcept override;
