@@ -12,7 +12,12 @@
 #include <cassert>
 
 #include "List.h"
+#include "Node.h"
 
+
+Node* List::get_next(const Node *currentNode) {
+
+}
 void List::deleteAllNodes() noexcept {
     assert( validate() );
     while( head != nullptr ) {

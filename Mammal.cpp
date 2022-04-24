@@ -12,3 +12,9 @@
 #include "Mammal.h"
 
 const string Mammal::MAMMAL_NAME = "Mammilian";
+
+Mammal::Mammal(const Weight::t_weight newMaxWeight, const std::string &newSpecies) : Animal( newMaxWeight, MAMMAL_NAME, newSpecies){
+    Animal( newMaxWeight, MAMMAL_NAME, newSpecies );
+
+
+}

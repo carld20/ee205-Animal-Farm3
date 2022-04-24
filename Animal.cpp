@@ -16,6 +16,7 @@
 #include <cassert>
 
 #include "Animal.h"
+#include "Weight.h"
 
 using namespace std;
 
@@ -69,7 +70,31 @@ Weight::t_weight Animal::getWeight() const noexcept {
     return weight;
 }
 
-bool Animal::validateSpecies(const std::string &checkSpecies) noexcept {
-
+bool Animal::validateSpecies(const string& checkSpecies) noexcept {
+    if( checkSpecies.length() <= 0 ){
+        throw invalid_argument("AnimalFarm3: species must be specified");
+        return false;
+    }
+    return true;
 }
 
+bool Animal::validateClassification(const string &checkClassification) noexcept {
+    if( checkClassification.length() <= 0 ){
+        throw invalid_argument("AnimalFarm3: classification must be specified");
+        return false;
+    }
+    return true;
+}
+
+Animal::Animal(const Weight::t_weight newMaxWeight, const string &newClassification, const string &newSpecies) {
+    Weight::t_weight maxWeight = newMaxWeight;
+    assert( validate () );
+}
+
+Animal::Animal(const Gender newGender, const Weight::t_weight newWeight, const Weight::t_weight newMaxWeight,
+               const string &newClassification, const string &newSpecies): Animal( newMaxWeight, &newClassification, &newSpecies) {
+    setGender( newGender );
+    weight = newWeight;
+    assert( validate() );
+
+}

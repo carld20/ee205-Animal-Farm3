@@ -19,8 +19,7 @@
 #define MAX_CAT_NAME (30)
 
 using namespace std;
-typedef float t_weight;
-const t_weight UNKNOWN_WEIGHT = -1;
+
 
 
 class Cat : public Mammal {
@@ -34,7 +33,7 @@ protected:
 
 public:
     //create cat w/min fields
-    explicit Cat( const string* newName ) : Mammal( MAX_WEIGHT, SPECIES_NAME ){
+    explicit Cat( const string& newName ) : Mammal( MAX_WEIGHT, SPECIES_NAME ){
         if ( !validateName( newName )) {
             throw out_of_range("Cat needs a name");
         }
@@ -73,5 +72,5 @@ public:
 
 public:
     static bool validateName( const string& newName );  //check newName is good
-}
+};
 

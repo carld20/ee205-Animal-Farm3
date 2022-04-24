@@ -65,8 +65,8 @@ public:
     void setWeight( const Weight::t_weight newWeight );
 
 public:
-    static bool validateClassification( const std::string& checkClassification ) noexcept;
-    static bool validateSpecies( const std::string& checkSpecies ) noexcept;
+    static bool validateClassification( const string& checkClassification ) noexcept;
+    static bool validateSpecies( const string& checkSpecies ) noexcept;
 
 protected:
     void setGender( const Gender newGender);
