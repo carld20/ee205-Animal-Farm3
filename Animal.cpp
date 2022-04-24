@@ -13,6 +13,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <iomanip>
+#include <cassert>
 
 #include "Animal.h"
 
@@ -20,25 +21,55 @@ using namespace std;
 
 const string Animal::KINGDOM_NAME = "Animalia";
 
-
-Animal::Animal(const Weight::t_weight newMaxWeight, const string& newClassification, const string& newSpecies) {
-    setWeight( newMaxWeight );
-    classification = newClassification;
-    species = newSpecies;
+bool Animal::validate() const noexcept {
+    try {
+        validateClassification(classification);
+        validateSpecies(species);
+    }
+    catch( exception const& e ){
+        cout << e.what() << endl;
+        return false;
+    }
+    return true;
 }
 
-Animal::Animal(const Gender newGender, const Weight::t_weight newWeight, const Weight::t_weight newMaxWeight,
-               const string &newClassification, const string &newSpecies) {
-    setGender( newGender );
-    //set weight and maxWeight
-    classification = newClassification;
-    species = newSpecies;
+string Animal::getKingdom() const noexcept{
+    assert( validate() );
+    return KINGDOM_NAME;
 }
 
-string Animal::getKingdom() const noexcept {
-    cout << KINGDOM_NAME;
+void Animal::setGender(const Gender newGender) {
+    assert( validate() );
+    gender = newGender;
+}
+
+string Animal::getClassification() const noexcept {
+    assert( validate() );
+    return classification;
 }
 
 string Animal::getSpecies() const noexcept {
-    cout <<
+    assert( validate () );
+    return species;
 }
+
+Gender Animal::getGender() const noexcept {
+    assert( validate() );
+    return gender;
+}
+
+void Animal::setWeight(const Weight::t_weight newWeight) {
+    assert( validate() );
+    weight = newWeight;
+
+}
+
+Weight::t_weight Animal::getWeight() const noexcept {
+    assert( validate() );
+    return weight;
+}
+
+bool Animal::validateSpecies(const std::string &checkSpecies) noexcept {
+
+}
+

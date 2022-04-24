@@ -42,16 +42,16 @@ private:
 
 public:
     //create animal w/min req fields
-    Animal( const Weight::t_weight newMaxWeight
-            ,const string&     newClassification
-            ,const string&     newSpecies
+    Animal( const Weight::t_weight      newMaxWeight
+            ,const string&              newClassification
+            ,const string&              newSpecies
     );
     //create animal w/all fields
-    Animal( const Gender           newGender
-            ,const Weight::t_weight newWeight
-            ,const Weight::t_weight newMaxWeight
-            ,const string&     newClassification
-            ,const string&     newSpecies
+    Animal( const Gender                newGender
+            ,const Weight::t_weight     newWeight
+            ,const Weight::t_weight     newMaxWeight
+            ,const string&              newClassification
+            ,const string&              newSpecies
     );
 
 public:

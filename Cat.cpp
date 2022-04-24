@@ -23,6 +23,7 @@
 using namespace std;
 
 const string Cat::SPECIES_NAME = "Felic Catus";
+const Weight::t_weight Cat::MAX_WEIGHT = 40;
 
 void Cat::zeroOutMember() {
     memset(name, 0, MAX_CAT_NAME);

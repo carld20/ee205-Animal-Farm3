@@ -44,6 +44,7 @@ public:
 
     bool isWeightValid( t_weight checkWeight ) const noexcept;
     void dump() const noexcept;
+    bool validate() const noexcept;
     bool operator==(const Weight &rhs_Weight ) const;
     bool operator<( const Weight &rhs_Weight ) const;
     Weight &operator+=( float rhs_addToWeight );
@@ -56,9 +57,9 @@ public:
     static float convertWeight( float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit );
 
 public:
-    static const float UNKNOWN_WEIGHT;
-    static const float KILOS_IN_POUND; //kg to pound constant
-    static const float SLUGS_IN_POUND;  //slug to pound constant
+    static const t_weight UNKNOWN_WEIGHT;
+    static const t_weight KILOS_IN_POUND; //kg to pound constant
+    static const t_weight SLUGS_IN_POUND;  //slug to pound constant
     static const string POUND_LABEL; //lb label
     static const string KILO_LABEL; //kg label
     static const string SLUG_LABEL; //slug label
