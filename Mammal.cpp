@@ -9,12 +9,16 @@
 /// @date   22_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 
+#include <cassert>
+#include <iostream>
+#include <iomanip>
+
 #include "Mammal.h"
 
 const string Mammal::MAMMAL_NAME = "Mammilian";
 
-Mammal::Mammal(const Weight::t_weight newMaxWeight, const std::string &newSpecies) : Animal( newMaxWeight, MAMMAL_NAME, newSpecies){
-    Animal( newMaxWeight, MAMMAL_NAME, newSpecies );
 
-
+void Mammal::dump() const noexcept{
+    assert( Animal::validate() );
+    FORMAT_LINE_DUMP("Mammal", "color") << color << endl;
 }

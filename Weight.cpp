@@ -76,7 +76,7 @@ float Weight::convertWeight(float fromWeight, UnitOfWeight fromUnit, UnitOfWeigh
 
 bool Weight::isWeightValid( const float checkWeight ) const noexcept {
     if( checkWeight <= 0 && checkWeight > maxWeight ){
-        throw invalid_argument( "FatCat: Weight has reached maxWeight or is not possible" );
+        cout << "FatCat: Weight has reached maxWeight or is not possible" << endl;
         return false;
     }
     return true;
@@ -216,7 +216,7 @@ bool Weight::validate() const noexcept{
     }
     if( bHasMax ){
         if( !isWeightValid( maxWeight ) ){
-            throw logic_error("Animal Farm: Max weight must be > 0");
+            cout << "Animal Farm: Max weight must be > 0" << endl;
             return false;
         }
 

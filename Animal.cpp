@@ -80,19 +80,20 @@ bool Animal::validateSpecies(const string& checkSpecies) noexcept {
 
 bool Animal::validateClassification(const string &checkClassification) noexcept {
     if( checkClassification.length() <= 0 ){
-        throw invalid_argument("AnimalFarm3: classification must be specified");
+        cout << "AnimalFarm3: classification must be specified" << endl;
         return false;
     }
     return true;
 }
 
-Animal::Animal(const Weight::t_weight newMaxWeight, const string &newClassification, const string &newSpecies) {
+Animal::Animal(const Weight::t_weight newMaxWeight, const string& newClassification, const string& newSpecies) {
     Weight::t_weight maxWeight = newMaxWeight;
+    classification = newClassification;
     assert( validate () );
 }
 
 Animal::Animal(const Gender newGender, const Weight::t_weight newWeight, const Weight::t_weight newMaxWeight,
-               const string &newClassification, const string &newSpecies): Animal( newMaxWeight, &newClassification, &newSpecies) {
+               const string& newClassification, const string& newSpecies): Animal( newMaxWeight, &newClassification, &newSpecies) {
     setGender( newGender );
     weight = newWeight;
     assert( validate() );
