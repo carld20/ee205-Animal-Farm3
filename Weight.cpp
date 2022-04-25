@@ -21,9 +21,9 @@ using namespace std;
 
 #define FORMAT_LINE( className, member) cout << setw(8) << (className) << setw(20) << (member) << setw(52)
 
-const float Weight::UNKNOWN_WEIGHT = -1;
-const float Weight::KILOS_IN_POUND = 0.453592;
-const float Weight::SLUGS_IN_POUND = 0.031081;
+const Weight::t_weight Weight::UNKNOWN_WEIGHT = -1;
+const Weight::t_weight Weight::KILOS_IN_POUND = 0.453592;
+const Weight::t_weight Weight::SLUGS_IN_POUND = 0.031081;
 const string Weight::POUND_LABEL = "Pound";
 const string Weight::KILO_LABEL = "Kilo";
 const string Weight::SLUG_LABEL = "Slug";
@@ -137,7 +137,7 @@ Weight::Weight() noexcept{
     assert( validate() );
 }
 
-Weight::Weight( float newWeight ){
+Weight::Weight( const Weight::t_weight newWeight ){
     setWeight( newWeight );
     assert( validate() );
 }
@@ -147,29 +147,29 @@ Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight ) noexcept{
     assert( validate() );
 }
 
-Weight::Weight( const float newWeight, const Weight::UnitOfWeight newUnitOfWeight ): Weight( newUnitOfWeight ){
+Weight::Weight( const Weight::t_weight newWeight, const Weight::UnitOfWeight newUnitOfWeight ): Weight( newUnitOfWeight ){
     setWeight( newWeight, newUnitOfWeight );
     assert( validate() );
 
 }
 
-Weight::Weight( const float newWeight, const float newMaxWeight ){
+Weight::Weight( const Weight::t_weight newWeight, const Weight::t_weight newMaxWeight ){
     setWeight( newWeight );
     setMaxWeight( newMaxWeight );
     assert( validate() );
 }
 
-Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight, const float newMaxWeight ):Weight ( newUnitOfWeight ){
+Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight, const Weight::t_weight newMaxWeight ):Weight ( newUnitOfWeight ){
     setMaxWeight( newMaxWeight );
     assert( validate() );
 }
 
-Weight::Weight( const float newWeight, const Weight::UnitOfWeight newUnitOfWeight, const float newMaxWeight ):Weight( newUnitOfWeight, newMaxWeight ){
+Weight::Weight( const Weight::t_weight newWeight, const Weight::UnitOfWeight newUnitOfWeight, const Weight::t_weight newMaxWeight ):Weight( newUnitOfWeight, newMaxWeight ){
     setWeight( newWeight );
     assert( validate() );
 }
 
-void Weight::setMaxWeight(float newMaxWeight) {
+void Weight::setMaxWeight(Weight::t_weight newMaxWeight) {
     assert( !bHasMax );
     if( !isWeightValid( newMaxWeight ) ){
         throw out_of_range("FatCat: Max weight is not valid");
@@ -178,7 +178,7 @@ void Weight::setMaxWeight(float newMaxWeight) {
     bHasMax = true;
 }
 
-void Weight::setWeight( float newWeight ){
+void Weight::setWeight( Weight::t_weight newWeight ){
     assert( validate() );
 
     if( !isWeightValid( newWeight ) ){
@@ -189,7 +189,7 @@ void Weight::setWeight( float newWeight ){
     assert( validate() );
 }
 
-void Weight::setWeight( const float newWeight, const Weight::UnitOfWeight weightUnits ) {
+void Weight::setWeight( const Weight::t_weight newWeight, const Weight::UnitOfWeight weightUnits ) {
     setWeight(convertWeight( newWeight, weightUnits, unitOfWeight ) );
 }
 

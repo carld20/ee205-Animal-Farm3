@@ -14,6 +14,7 @@
 #include <glob.h>
 
 #include "Mammal.h"
+#include "Weight.h"
 
 using namespace std;
 

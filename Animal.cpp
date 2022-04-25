@@ -23,8 +23,9 @@ using namespace std;
 const string Animal::KINGDOM_NAME = "Animalia";
 
 bool Animal::validate() const noexcept {
-    assert(!getKingdom().empty());
-    assert(validateClassification(getClassification()));
+    assert( Node::validate() );
+    assert( !getKingdom().empty() );
+    assert( validateClassification(getClassification() ) );
     assert( validateSpecies( getSpecies() ) );
     assert( weight.validate() );
 
@@ -55,13 +56,13 @@ Gender Animal::getGender() const noexcept {
 }
 
 void Animal::setWeight(const Weight::t_weight newWeight) {
-    assert( validate() );
-    weight = newWeight;
+    validate();
+    weight.setWeight( newWeight );
+    validate();
 
 }
 
 Weight::t_weight Animal::getWeight() const noexcept {
-    assert( validate() );
     return weight.getWeight();
 }
 
@@ -81,7 +82,7 @@ bool Animal::validateClassification(const string &checkClassification) noexcept 
     return true;
 }
 
-Animal::Animal(const Weight::t_weight newMaxWeight, const string& newClassification, const string& newSpecies) {
+Animal::Animal(const Weight::t_weight newMaxWeight, const string& newClassification, const string& newSpecies) : Node(), weight(Weight::POUND, newMaxWeight) {
     if( !validateClassification( newClassification ) ){
         throw invalid_argument("AnimalFarm3: Classification of animal is not valid");
     }
@@ -96,13 +97,13 @@ Animal::Animal(const Weight::t_weight newMaxWeight, const string& newClassificat
 }
 
 Animal::Animal(const Gender newGender, const Weight::t_weight newWeight, const Weight::t_weight newMaxWeight,
-               const string& newClassification, const string& newSpecies): Node(), weight( newWeight, newMaxWeight){
+               const string& newClassification, const string& newSpecies) : Node(), weight( newWeight, newMaxWeight){
     if( !validateClassification( newClassification ) ){
         throw invalid_argument("AnimalFarm3: Classification of animal is not valid");
     }
 
     if( !validateSpecies( newSpecies ) ){
-        throw invalid_argument("AnimalFarm3: Species of animla is not valid");
+        throw invalid_argument("AnimalFarm3: Species of animal is not valid");
     }
 
     setGender( newGender );

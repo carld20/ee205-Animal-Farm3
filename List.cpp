@@ -12,7 +12,6 @@
 #include <cassert>
 
 #include "List.h"
-#include "Node.h"
 
 using namespace std;
 

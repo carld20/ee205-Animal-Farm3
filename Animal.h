@@ -19,8 +19,6 @@
 
 using namespace std;
 
-
-
 class Animal : public Node {
 public:
     static const string KINGDOM_NAME;

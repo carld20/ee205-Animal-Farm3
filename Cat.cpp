@@ -20,7 +20,7 @@
 using namespace std;
 
 const string Cat::SPECIES_NAME = "Felis Catus";
-const Weight::t_weight MAX_WEIGHT = 40;
+const Weight::t_weight Cat::MAX_WEIGHT = 40;
 
 string Cat::getName() const noexcept{
     assert( validate() );
