@@ -14,9 +14,14 @@
 #include "List.h"
 #include "Node.h"
 
+using namespace std;
 
 Node* List::get_next(const Node *currentNode) {
+    if( currentNode == nullptr ){
+        throw invalid_argument("AnimalFarm3: currentNode must have a value");
+    }
 
+    return currentNode->next;
 }
 void List::deleteAllNodes() noexcept {
     assert( validate() );
@@ -28,3 +33,48 @@ void List::deleteAllNodes() noexcept {
 #endif
     assert( validate() );
 }
+
+bool List::empty() const noexcept{
+    return (head == nullptr );
+}
+
+unsigned int List::size() const noexcept{
+    return count;
+}
+
+bool List::isIn( Node* aNode ) const {
+    if( aNode == nullptr ){
+        cout << "AnimalFarm3: aNode needs a value" << endl;
+        return false;
+    }
+
+    Node* currentNode = head;
+
+    while( currentNode != nullptr ){
+        if( aNode == currentNode ){
+            return true;
+        }
+        currentNode = currentNode->next;
+    }
+    return false;
+}
+
+bool List::isSorted() const noexcept {
+    assert( validate() );
+
+    if( count <= 1 ){
+        return true;
+    }
+
+    for( Node* i = head; i->next != nullptr; i = i->next ){
+        if( *i > *i->next ){
+            return false;
+        }
+    }
+    return true;
+}
+
+Node* List::get_first() const noexcept {
+    return head;
+}
+

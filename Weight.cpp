@@ -15,7 +15,7 @@
 #include <iomanip>
 #include <cstring>
 
-#include "weight.h"
+#include "Weight.h"
 
 using namespace std;
 

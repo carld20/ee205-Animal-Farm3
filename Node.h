@@ -13,12 +13,10 @@
 
 #include <iostream>
 
-#include "Animal.h"
+#define PRINT_HEADING_DUMP cout << setw(80) << setfill( '=' ) << "" << endl
 
+#define FORMAT_LINE_DUMP( className, member ) cout << setfill( ' ' ) << left << boolalpha << setw( 8) << (className) << setw(20) << (member) << setw(52)
 using namespace std;
-
-
-
 
 class Node{
     friend class List;

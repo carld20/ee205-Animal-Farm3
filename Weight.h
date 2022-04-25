@@ -73,5 +73,4 @@ private:
     t_weight weight{};
     t_weight maxWeight {};
 
-
 };

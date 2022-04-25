@@ -15,12 +15,7 @@
 
 #include "Mammal.h"
 
-#define MAX_CATS (30)
-#define MAX_CAT_NAME (30)
-
 using namespace std;
-
-
 
 class Cat : public Mammal {
 public:

@@ -23,19 +23,16 @@ using namespace std;
 const string Animal::KINGDOM_NAME = "Animalia";
 
 bool Animal::validate() const noexcept {
-    try {
-        validateClassification(classification);
-        validateSpecies(species);
-    }
-    catch( exception const& e ){
-        cout << e.what() << endl;
-        return false;
-    }
+    assert(!getKingdom().empty());
+    assert(validateClassification(getClassification()));
+    assert( validateSpecies( getSpecies() ) );
+    assert( weight.validate() );
+
     return true;
 }
 
+
 string Animal::getKingdom() const noexcept{
-    assert( validate() );
     return KINGDOM_NAME;
 }
 
@@ -45,12 +42,10 @@ void Animal::setGender(const Gender newGender) {
 }
 
 string Animal::getClassification() const noexcept {
-    assert( validate() );
     return classification;
 }
 
 string Animal::getSpecies() const noexcept {
-    assert( validate () );
     return species;
 }
 
@@ -67,12 +62,12 @@ void Animal::setWeight(const Weight::t_weight newWeight) {
 
 Weight::t_weight Animal::getWeight() const noexcept {
     assert( validate() );
-    return weight;
+    return weight.getWeight();
 }
 
 bool Animal::validateSpecies(const string& checkSpecies) noexcept {
     if( checkSpecies.length() <= 0 ){
-        throw invalid_argument("AnimalFarm3: species must be specified");
+        cout << "AnimalFarm3: species must be specified" << endl;
         return false;
     }
     return true;
@@ -87,15 +82,42 @@ bool Animal::validateClassification(const string &checkClassification) noexcept 
 }
 
 Animal::Animal(const Weight::t_weight newMaxWeight, const string& newClassification, const string& newSpecies) {
-    Weight::t_weight maxWeight = newMaxWeight;
+    if( !validateClassification( newClassification ) ){
+        throw invalid_argument("AnimalFarm3: Classification of animal is not valid");
+    }
+
+    if( !validateSpecies( newSpecies ) ){
+        throw invalid_argument("AnimalFarm3: Species of animla is not valid");
+    }
+
     classification = newClassification;
-    assert( validate () );
+    species = newSpecies;
+    Animal::validate();
 }
 
 Animal::Animal(const Gender newGender, const Weight::t_weight newWeight, const Weight::t_weight newMaxWeight,
-               const string& newClassification, const string& newSpecies): Animal( newMaxWeight, &newClassification, &newSpecies) {
-    setGender( newGender );
-    weight = newWeight;
-    assert( validate() );
+               const string& newClassification, const string& newSpecies): Node(), weight( newWeight, newMaxWeight){
+    if( !validateClassification( newClassification ) ){
+        throw invalid_argument("AnimalFarm3: Classification of animal is not valid");
+    }
 
+    if( !validateSpecies( newSpecies ) ){
+        throw invalid_argument("AnimalFarm3: Species of animla is not valid");
+    }
+
+    setGender( newGender );
+    Animal::validate();
+}
+
+void Animal::dump() const noexcept{
+    assert( validate() );
+    PRINT_HEADING_DUMP;
+    Node::dump();
+
+    FORMAT_LINE_DUMP("Animal", "this")              << this << endl;
+    FORMAT_LINE_DUMP("Animal", "kingdom")           << getKingdom() << endl;
+    FORMAT_LINE_DUMP("Animal", "classification")    << getClassification() << endl;
+    FORMAT_LINE_DUMP("Animal", "species")           << getSpecies() << endl;
+    FORMAT_LINE_DUMP("Animal", "gender")            << getGender() << endl;
+    FORMAT_LINE_DUMP("Animal", "weight")            << getWeight() << endl;
 }
