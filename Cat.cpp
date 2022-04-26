@@ -23,12 +23,13 @@ const string Cat::SPECIES_NAME = "Felis Catus";
 const Weight::t_weight Cat::MAX_WEIGHT = 40;
 
 string Cat::getName() const noexcept{
-    assert( validate() );
     return name;
 }
 
-void Cat::setName(const string &newName) {
-    assert( validateName( newName) );
+void Cat::setName(const string& newName) {
+    if (!validateName(newName)) {
+    throw invalid_argument("AnimalFarm3: Cat needs a better name");
+    }
     name = newName;
 }
 
@@ -62,7 +63,7 @@ void Cat::fixCat() noexcept {
 }
 
 bool Cat::validateName( const string& newName ){
-    if( !newName.empty() ){
+    if( newName.empty() ){
         cout << "AnimalFarm3: Cat needs a name" << endl;    //initially had throw but throw should be better with void functions
         return false;
     }

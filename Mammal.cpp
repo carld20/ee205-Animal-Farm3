@@ -19,6 +19,8 @@ const string Mammal::MAMMAL_NAME = "Mammilian";
 
 
 void Mammal::dump() const noexcept{
-    assert( Animal::validate() );
+    assert( validate() );
+    Animal::dump();
+
     FORMAT_LINE_DUMP("Mammal", "color") << color << endl;
 }

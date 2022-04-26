@@ -17,22 +17,27 @@
 
 using namespace std;
 
-#define TRACE_START TRACE_OUT("Start", __FUNCTION__);
-#define TRACE_END TRACE_OUT("End", __FUNCTION__);
+#ifdef TRACE
+    static void TRACE_OUT( const string operation, const string functionName ){
+        cout << "AnimalFarm3: " << operation << " " << functionName << endl;
+    }
 
-void TRACE_OUT( const string operation, const string functionName ){
-    cout << "AnimalFarm3: " << operation << " " << functionName << endl;
-}
+    #define TRACE_START TRACE_OUT("Start", __FUNCTION__);
+    #define TRACE_END TRACE_OUT("End", __FUNCTION__);
+#else
+    #define TRACE_START
+    #define TRACE_END
+#endif
+
 
 SinglyLinkedList::SinglyLinkedList() {
-    assert( SinglyLinkedList::validate() );
-}
-
+        assert( SinglyLinkedList::validate() );
+    }
 
 void SinglyLinkedList::push_front(Node *newNode) {
     TRACE_START
 
-    if(newNode == nullptr ){
+    if( newNode == nullptr ){
         throw invalid_argument("AnimalFarm3: newNode can't be nullptr");
     }
 
@@ -110,6 +115,10 @@ void SinglyLinkedList::insert_after(Node *currentNode, Node *newNode) {
 
     if( newNode == nullptr ){
         throw invalid_argument("AnimalFarm3: newNode must have a value");
+    }
+
+    if( !newNode->validate() ) {
+        throw domain_error( "AnimalFarm3: newNode is not valid" );
     }
 
     if( isIn( newNode ) ){

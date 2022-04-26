@@ -17,6 +17,7 @@
 
 #include "Animal.h"
 #include "Weight.h"
+#include "Node.h"
 
 using namespace std;
 
@@ -38,7 +39,11 @@ string Animal::getKingdom() const noexcept{
 }
 
 void Animal::setGender(const Gender newGender) {
-    assert( validate() );
+    if( gender != Gender::Unknown_Gender ){
+        throw invalid_argument("AnimalFarm3: Gender can't be changed");
+    }
+    assert( gender == Gender::Unknown_Gender );
+    validate();
     gender = newGender;
 }
 
@@ -51,7 +56,6 @@ string Animal::getSpecies() const noexcept {
 }
 
 Gender Animal::getGender() const noexcept {
-    assert( validate() );
     return gender;
 }
 
@@ -67,7 +71,7 @@ Weight::t_weight Animal::getWeight() const noexcept {
 }
 
 bool Animal::validateSpecies(const string& checkSpecies) noexcept {
-    if( checkSpecies.length() <= 0 ){
+    if( checkSpecies.empty() ){
         cout << "AnimalFarm3: species must be specified" << endl;
         return false;
     }
@@ -75,7 +79,7 @@ bool Animal::validateSpecies(const string& checkSpecies) noexcept {
 }
 
 bool Animal::validateClassification(const string &checkClassification) noexcept {
-    if( checkClassification.length() <= 0 ){
+    if( checkClassification.empty() ){
         cout << "AnimalFarm3: classification must be specified" << endl;
         return false;
     }
@@ -86,12 +90,10 @@ Animal::Animal(const Weight::t_weight newMaxWeight, const string& newClassificat
     if( !validateClassification( newClassification ) ){
         throw invalid_argument("AnimalFarm3: Classification of animal is not valid");
     }
-
+    classification = newClassification;
     if( !validateSpecies( newSpecies ) ){
         throw invalid_argument("AnimalFarm3: Species of animla is not valid");
     }
-
-    classification = newClassification;
     species = newSpecies;
     Animal::validate();
 }
@@ -101,11 +103,12 @@ Animal::Animal(const Gender newGender, const Weight::t_weight newWeight, const W
     if( !validateClassification( newClassification ) ){
         throw invalid_argument("AnimalFarm3: Classification of animal is not valid");
     }
+    classification = newClassification;
 
     if( !validateSpecies( newSpecies ) ){
         throw invalid_argument("AnimalFarm3: Species of animal is not valid");
     }
-
+    species = newSpecies;
     setGender( newGender );
     Animal::validate();
 }

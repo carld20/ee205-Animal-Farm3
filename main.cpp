@@ -22,6 +22,9 @@ using namespace std ;
 
 
 int main() {
+
+    cout << "Starting AnimalFarm3:" << endl;
+
     SinglyLinkedList catDB ;
 
     catDB.push_front( new Cat( "Brae",  Color::CREAM,  true, Gender::Male,   13.2) ) ;
@@ -41,6 +44,10 @@ int main() {
     for( Animal* pAnimal = (Animal*)catDB.get_first() ; pAnimal != nullptr ; pAnimal = (Animal*)List::get_next( (Node*)pAnimal ) ) {
         cout << pAnimal->speak() << endl;
     }
+    catDB.validate() ;
+    catDB.dump() ;
+    catDB.deleteAllNodes() ;
+    catDB.dump() ;
 
     cout << "Done with AnimalFarm3" ;
     return( EXIT_SUCCESS ) ;

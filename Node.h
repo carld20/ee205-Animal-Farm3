@@ -16,12 +16,7 @@
 
 #define PRINT_HEADING_DUMP cout << setw(80) << setfill( '=' ) << "" << endl
 
-#define FORMAT_LINE_DUMP( className, member ) \
-cout << setfill( ' ' ) <<                     \
-left << boolalpha <<                          \
-setw( 8) << (className) <<                    \
-setw(20) << (member) <<                       \
-setw(52)
+#define FORMAT_LINE_DUMP( className, member ) cout << setfill( ' ' ) << left << boolalpha << setw( 8) << (className) << setw(20) << (member) << setw(52)
 
 using namespace std;
 
@@ -33,15 +28,16 @@ protected:
     Node* next = nullptr;
 
     static bool compareByAddress( const Node* node1, const Node* node2 ){
-        if( node1 > node2 )
+        if( node1 > node2 ){
             return true;
+        }
         return false;
     }
 
 public:
     virtual void dump() const {
         FORMAT_LINE_DUMP( "Node", "this" ) << this << endl;
-        FORMAT_LINE_DUMP( "Node", "this" ) << next << endl;
+        FORMAT_LINE_DUMP( "Node", "next" ) << next << endl;
     }
 
     virtual bool validate() const noexcept{
