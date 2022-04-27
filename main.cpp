@@ -12,7 +12,7 @@
 //// @date   03/08/2022
 /////////////////////////////////////////////////////////////////////////////////
 
-#include <cstdlib>  // For EXIT_SUCCESS / EXIT_FAILURE
+#include <cstdlib>
 #include <iostream>
 
 #include "Cat.h"

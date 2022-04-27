@@ -239,3 +239,13 @@ bool Weight::operator<( const Weight &rhs_Weight ) const{
 
     return rhs_weight > lhs_weight;
 }
+
+Weight &Weight::operator+=( const t_weight rhs_addToWeight ) {
+    if( !bIsKnown ) {
+        throw out_of_range("AnimalFarm3: Weight is not known");
+    }
+
+    setWeight( weight + rhs_addToWeight );
+
+    return *this;
+}

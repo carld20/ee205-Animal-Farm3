@@ -79,7 +79,7 @@ Node* SinglyLinkedList::pop_front() noexcept {
     Node* returnValue = head;
 
     if( head->next != nullptr ){
-        head - head->next;
+        head = head->next;
     }
     else{
         head = nullptr;
@@ -153,12 +153,12 @@ bool SinglyLinkedList::validate() const noexcept{
         assert( !empty() );
     }
 
-    if( head != nullptr ){
+/*    if( head != nullptr ){
         if( head->next == nullptr ){
             assert( count == 1);
         }
     }
-
+*/
     unsigned int nextCount = 0;
     Node* currentNode = head;
 

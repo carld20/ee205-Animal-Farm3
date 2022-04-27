@@ -49,7 +49,7 @@ public:
     bool validate() const noexcept;
     bool operator==(const Weight &rhs_Weight ) const;
     bool operator<( const Weight &rhs_Weight ) const;
-    Weight &operator+=( float rhs_addToWeight );
+    Weight &operator+=( t_weight rhs_addToWeight );
 
 public:
     static float fromKiloToPound(float kilogram ) noexcept; //kg to lb conv

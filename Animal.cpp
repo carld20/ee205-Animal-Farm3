@@ -71,7 +71,7 @@ Weight::t_weight Animal::getWeight() const noexcept {
 }
 
 bool Animal::validateSpecies(const string& checkSpecies) noexcept {
-    if( checkSpecies.empty() ){
+    if( checkSpecies.length() <= 0 ){
         cout << "AnimalFarm3: species must be specified" << endl;
         return false;
     }
@@ -79,7 +79,7 @@ bool Animal::validateSpecies(const string& checkSpecies) noexcept {
 }
 
 bool Animal::validateClassification(const string &checkClassification) noexcept {
-    if( checkClassification.empty() ){
+    if( checkClassification.length() <= 0 ){
         cout << "AnimalFarm3: classification must be specified" << endl;
         return false;
     }
